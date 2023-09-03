@@ -1,14 +1,21 @@
 import "package:flutter/material.dart";
 
-class MovieCard extends StatelessWidget {
+var movieDesc = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum non rhoncus libero. Phasellus id eros eu tortor malesuada sollicitudin.";
+const String moviePoster = "assets/images/1677116967_netflix.webp";
 
+class MovieCard extends StatelessWidget {
   @override
   Widget build(context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 10.0),
       child: Container(
-        color: const Color.fromARGB(168, 89, 88, 88),
         height: 200,
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage(moviePoster),
+            fit: BoxFit.cover
+          ),
+        ),
       ),
     );
   }
