@@ -1,10 +1,11 @@
 import "package:flutter/material.dart";
 import 'package:scroll_movies/movie_card.dart';
 import 'package:scroll_movies/movie.dart';
+import 'package:scroll_movies/movie_detailed.dart';
 
-const movieDesc =
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum non rhoncus libero. Phasellus id eros eu tortor malesuada sollicitudin.";
-const String moviePoster = "assets/images/1677116967_netflix.webp";
+
+// const String movieDesc = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum non rhoncus libero. Phasellus id eros eu tortor malesuada sollicitudin.";
+// const String moviePoster = "assets/images/1677116967_netflix.webp";
 
 
 class MainPage extends StatefulWidget{
@@ -16,8 +17,10 @@ class MainPage extends StatefulWidget{
 
 class _MainPageState extends State<MainPage>{
   List <Movie> movies = [
-    const Movie(title: "some movie", description: movieDesc, poster: moviePoster), 
-    
+    const Movie(title: "some movie", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum non rhoncus libero. Phasellus id eros eu tortor malesuada sollicitudin.", poster: "assets/images/1677116967_netflix.webp"), 
+    const Movie(title: "some movie", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum non rhoncus libero. Phasellus id eros eu tortor malesuada sollicitudin.", poster: "assets/images/1677116967_netflix.webp"), 
+    const Movie(title: "some movie", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum non rhoncus libero. Phasellus id eros eu tortor malesuada sollicitudin.", poster: "assets/images/1677116967_netflix.webp"), 
+    const Movie(title: "some movie", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum non rhoncus libero. Phasellus id eros eu tortor malesuada sollicitudin.", poster: "assets/images/1677116967_netflix.webp"),
   ]; 
 
   @override
@@ -26,25 +29,18 @@ class _MainPageState extends State<MainPage>{
       body: ListView.builder(
           itemCount: movies.length,
           itemBuilder: (context, index) {
-            final movie = movies[index];
+            const movie = movies[index];
 
             return const MovieCard(
-              poster: movie.poster
+              poster: 
               child: ListTile(
-                onTap: Navigator.of(context).push(MaterialPageRoute(builder: (context) => MovieDetailed(movie:movie),
-                  ),
-                );
+                onTap: Navigator.of(context).push(MaterialPageRoute(builder: (context) => MovieDetailed(movie: movie),),);
                 ),
             );
           }),
     );
   }
 }
-
-
-// class MovieDetailed extends StatelessWidget{
-  
-// }
 
 
 
