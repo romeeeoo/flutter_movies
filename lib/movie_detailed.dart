@@ -22,11 +22,11 @@ class MovieDetailed extends StatelessWidget {
         ),
         Container(
           padding: const EdgeInsets.all(32),
-          child: const Text(
+          child: Text(
             movie.description,
             softWrap: true,
   ),
-);
+)
       ],
     ));
   }

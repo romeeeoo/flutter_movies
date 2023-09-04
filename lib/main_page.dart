@@ -8,20 +8,8 @@ import 'package:scroll_movies/movie_detailed.dart';
 // const String moviePoster = "assets/images/1677116967_netflix.webp";
 
 
-class MainPage extends StatefulWidget{
-  const MainPage({super.key})
-
-  @override
-  _MainPageState createState()=> _MainPageState();
-}
-
-class _MainPageState extends State<MainPage>{
-  List <Movie> movies = [
-    const Movie(title: "some movie", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum non rhoncus libero. Phasellus id eros eu tortor malesuada sollicitudin.", poster: "assets/images/1677116967_netflix.webp"), 
-    const Movie(title: "some movie", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum non rhoncus libero. Phasellus id eros eu tortor malesuada sollicitudin.", poster: "assets/images/1677116967_netflix.webp"), 
-    const Movie(title: "some movie", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum non rhoncus libero. Phasellus id eros eu tortor malesuada sollicitudin.", poster: "assets/images/1677116967_netflix.webp"), 
-    const Movie(title: "some movie", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum non rhoncus libero. Phasellus id eros eu tortor malesuada sollicitudin.", poster: "assets/images/1677116967_netflix.webp"),
-  ]; 
+class MainPage extends StatelessWidget{
+  const MainPage({super.key});
 
   @override
   Widget build(context) {
@@ -29,18 +17,27 @@ class _MainPageState extends State<MainPage>{
       body: ListView.builder(
           itemCount: movies.length,
           itemBuilder: (context, index) {
-            const movie = movies[index];
+            final movie = movies[index];
 
-            return const MovieCard(
-              poster: 
+            return MovieCard(
+              poster: movie.poster,
               child: ListTile(
-                onTap: Navigator.of(context).push(MaterialPageRoute(builder: (context) => MovieDetailed(movie: movie),),);
+                onTap: (){Navigator.of(context).push(MaterialPageRoute(builder: (context) => MovieDetailed(movie: movie),),);} 
                 ),
             );
           }),
     );
   }
+
 }
+
+const movies = [
+     Movie(title: "some movie", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum non rhoncus libero. Phasellus id eros eu tortor malesuada sollicitudin.", poster: "assets/images/1677116967_netflix.webp"), 
+     Movie(title: "some movie", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum non rhoncus libero. Phasellus id eros eu tortor malesuada sollicitudin.", poster: "assets/images/1677116967_netflix.webp"), 
+     Movie(title: "some movie", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum non rhoncus libero. Phasellus id eros eu tortor malesuada sollicitudin.", poster: "assets/images/1677116967_netflix.webp"), 
+     Movie(title: "some movie", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum non rhoncus libero. Phasellus id eros eu tortor malesuada sollicitudin.", poster: "assets/images/1677116967_netflix.webp"),
+  ]; 
+
 
 
 

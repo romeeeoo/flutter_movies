@@ -12,7 +12,7 @@ class MovieCard extends StatelessWidget {
     return Card(
       child: Container(
         height: 200,
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           image: DecorationImage(
               image: AssetImage(poster), fit: BoxFit.cover),
         ),
