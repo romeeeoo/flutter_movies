@@ -11,22 +11,41 @@ class MainPage extends StatelessWidget {
 
   @override
   Widget build(context) {
-    return SafeArea(
-      child: Scaffold(
-        body: Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 12,
+    return Scaffold(
+      body: Padding(
+        padding: const EdgeInsets.symmetric(
+          horizontal: 12,
+        ),
+        child: ListView.separated(
+          separatorBuilder: (context, index) => const SizedBox(
+            height: 20,
           ),
-          child: ListView.separated(
-            separatorBuilder: (context, index) => const SizedBox(
-              height: 20,
-            ),
-            itemCount: movies.length,
-            itemBuilder: (context, index) => MovieCard(
-                movie: movies[index],
-              ),
+          itemCount: movies.length,
+          itemBuilder: (context, index) => MovieCard(
+            movie: movies[index],
           ),
         ),
+      ),
+      appBar: AppBar(
+        leading: const Icon(
+          IconData(
+            0xf570,
+            fontFamily: 'MaterialIcons',
+          ),
+        ),
+        backgroundColor: const Color.fromARGB(255, 31, 31, 31),
+        title: const Text(
+          "Top 10 on IMDb this week",
+          style: TextStyle(color: Colors.white),
+        ),
+        actions: const [
+           Padding(
+             padding: EdgeInsets.symmetric(horizontal: 20),
+             child: Icon(
+              IconData(0xe402, fontFamily: 'MaterialIcons'),
+                     ),
+           ),
+        ],
       ),
     );
   }
