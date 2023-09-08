@@ -40,7 +40,7 @@ class MovieCard extends StatelessWidget {
                 height: 10,
               ),
               Container(
-                color: Color.fromARGB(255, 255, 235, 59),
+                color: const Color.fromARGB(255, 255, 235, 59),
                 child: Text(
                   movie.description,
                 ),
