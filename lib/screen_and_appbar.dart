@@ -10,12 +10,12 @@ class ScreenWithAppBar extends StatelessWidget {
   ScreenWithAppBar({
     required this.title,
     required this.pageContent,
-    this.pageContentPadding = 12,
+    this.pageContentPadding = 0,
     required this.hasRouteBack,
     super.key,
   });
 
-  Widget? setLeading(context) {
+  Widget? buildLeading(context) {
     if (hasRouteBack == true) {
       return leading = GestureDetector(
         onTap: () => Navigator.pop(context),
@@ -30,6 +30,7 @@ class ScreenWithAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       body: Padding(
         padding: EdgeInsets.symmetric(
           horizontal: pageContentPadding,
@@ -40,7 +41,7 @@ class ScreenWithAppBar extends StatelessWidget {
         automaticallyImplyLeading: false,
         backgroundColor: const Color.fromARGB(253, 29, 29, 29),
         title: Text(title),
-        leading: setLeading(context),
+        leading: buildLeading(context),
       ),
     );
   }

@@ -60,7 +60,7 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/images/1677116967_netflix.webp
+    - "assets/images/HD-wallpaper-godzilla-movies-movie-poster-godzilla-king-of-the-monsters-cyan-blue-vertical.jpg"
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

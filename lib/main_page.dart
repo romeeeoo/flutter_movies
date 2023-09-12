@@ -1,5 +1,5 @@
 import "package:flutter/material.dart";
-import 'package:scroll_movies/movie_card.dart';
+import 'package:scroll_movies/movie_card/movie_card.dart';
 import 'package:scroll_movies/movie.dart';
 import 'package:scroll_movies/screen_and_appbar.dart';
 
@@ -13,8 +13,9 @@ class MainPage extends StatelessWidget {
           hasRouteBack: false,
           title: "Top 10 on IMDb", 
           pageContent: ListView.separated(
-          separatorBuilder: (context, index) => const SizedBox(
-            height: 20,
+          separatorBuilder: (context, index) => const Divider(
+            height: 1,
+            color: Color.fromARGB(174, 86, 86, 86),
           ),
           itemCount: movies.length,
           itemBuilder: (context, index) => MovieCard(
@@ -29,80 +30,32 @@ const movies = [
       title: "some movie",
       description:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum non rhoncus libero. Phasellus id eros eu tortor malesuada sollicitudin.",
-      poster: "assets/images/1677116967_netflix.webp"),
-  Movie(
+      poster: "assets/images/HD-wallpaper-godzilla-movies-movie-poster-godzilla-king-of-the-monsters-cyan-blue-vertical.jpg"),
+        Movie(
       title: "some movie",
       description:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum non rhoncus libero. Phasellus id eros eu tortor malesuada sollicitudin.",
-      poster: "assets/images/1677116967_netflix.webp"),
-  Movie(
+      poster: "assets/images/HD-wallpaper-godzilla-movies-movie-poster-godzilla-king-of-the-monsters-cyan-blue-vertical.jpg"),
+        Movie(
       title: "some movie",
       description:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum non rhoncus libero. Phasellus id eros eu tortor malesuada sollicitudin.",
-      poster: "assets/images/1677116967_netflix.webp"),
-  Movie(
+      poster: "assets/images/HD-wallpaper-godzilla-movies-movie-poster-godzilla-king-of-the-monsters-cyan-blue-vertical.jpg"),
+        Movie(
       title: "some movie",
       description:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum non rhoncus libero. Phasellus id eros eu tortor malesuada sollicitudin.",
-      poster: "assets/images/1677116967_netflix.webp"),
-  Movie(
+      poster: "assets/images/HD-wallpaper-godzilla-movies-movie-poster-godzilla-king-of-the-monsters-cyan-blue-vertical.jpg"),
+        Movie(
       title: "some movie",
       description:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum non rhoncus libero. Phasellus id eros eu tortor malesuada sollicitudin.",
-      poster: "assets/images/1677116967_netflix.webp"),
-  Movie(
+      poster: "assets/images/HD-wallpaper-godzilla-movies-movie-poster-godzilla-king-of-the-monsters-cyan-blue-vertical.jpg"),
+        Movie(
       title: "some movie",
       description:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum non rhoncus libero. Phasellus id eros eu tortor malesuada sollicitudin.",
-      poster: "assets/images/1677116967_netflix.webp"),
-  Movie(
-      title: "some movie",
-      description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum non rhoncus libero. Phasellus id eros eu tortor malesuada sollicitudin.",
-      poster: "assets/images/1677116967_netflix.webp"),
-  Movie(
-      title: "some movie",
-      description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum non rhoncus libero. Phasellus id eros eu tortor malesuada sollicitudin.",
-      poster: "assets/images/1677116967_netflix.webp"),
-  Movie(
-      title: "some movie",
-      description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum non rhoncus libero. Phasellus id eros eu tortor malesuada sollicitudin.",
-      poster: "assets/images/1677116967_netflix.webp"),
-  Movie(
-      title: "some movie",
-      description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum non rhoncus libero. Phasellus id eros eu tortor malesuada sollicitudin.",
-      poster: "assets/images/1677116967_netflix.webp"),
-  Movie(
-      title: "some movie",
-      description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum non rhoncus libero. Phasellus id eros eu tortor malesuada sollicitudin.",
-      poster: "assets/images/1677116967_netflix.webp"),
-  Movie(
-      title: "some movie",
-      description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum non rhoncus libero. Phasellus id eros eu tortor malesuada sollicitudin.",
-      poster: "assets/images/1677116967_netflix.webp"),
-  Movie(
-      title: "some movie",
-      description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum non rhoncus libero. Phasellus id eros eu tortor malesuada sollicitudin.",
-      poster: "assets/images/1677116967_netflix.webp"),
-  Movie(
-      title: "some movie",
-      description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum non rhoncus libero. Phasellus id eros eu tortor malesuada sollicitudin.",
-      poster: "assets/images/1677116967_netflix.webp"),
-  Movie(
-      title: "some movie",
-      description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum non rhoncus libero. Phasellus id eros eu tortor malesuada sollicitudin.",
-      poster: "assets/images/1677116967_netflix.webp"),
-  Movie(
-      title: "some movie",
-      description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum non rhoncus libero. Phasellus id eros eu tortor malesuada sollicitudin.",
-      poster: "assets/images/1677116967_netflix.webp"),
+      poster: "assets/images/HD-wallpaper-godzilla-movies-movie-poster-godzilla-king-of-the-monsters-cyan-blue-vertical.jpg"),
+      
+  
 ];
