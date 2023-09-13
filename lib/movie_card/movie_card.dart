@@ -1,8 +1,7 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:scroll_movies/movie_detailed.dart';
 import 'package:scroll_movies/movie.dart';
+import 'package:scroll_movies/movie_card/add_to_watchlist_tab.dart';
 
 class MovieCard extends StatelessWidget {
   const MovieCard({
@@ -23,6 +22,7 @@ class MovieCard extends StatelessWidget {
         );
       },
       child: Container(
+        color: Color.fromRGBO(23, 23, 23, 1),
         height: 150,
         child: Padding(
           padding: const EdgeInsets.all(10),
@@ -31,32 +31,54 @@ class MovieCard extends StatelessWidget {
               Stack(
                 children: [
                   Image.asset(movie.poster),
-                  Positioned(
-                    top: -5,
-                    left: -9,
-                    child: GestureDetector(
-                      onTap: (){},
-                      child: Stack(
-                        alignment: Alignment.center,
-                        children: [
-                          Icon(
-                            IconData(0xe7f2, fontFamily: 'MaterialIcons'),
-                            color: Color.fromARGB(168, 37, 37, 37),
-                            size: 50,
-                            ),
-                          Positioned(
-                            top: 10,
-                            child: Icon(
-                              IconData(0xe047, fontFamily: 'MaterialIcons'),
-                              color: Color.fromARGB(213, 255, 255, 255),
-                              size: 25
-                            ),
-                          ),
-                        ]
+                  const AddToWatchlistTab(),
+                ],
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(10, 10, 0, 5),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 5),
+                      child: Text(
+                        "${movie.topPosition}",
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 16,
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 5),
+                      child: Text(
+                        movie.title,
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 16,
+                        ),
+                      ),
+                    ),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        const Padding(
+                          padding: EdgeInsets.only(right: 3),
+                          child: Icon(IconData(0xf01d3, fontFamily: 'MaterialIcons'), color:Color.fromARGB(255, 230, 199, 25), size: 21),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(right: 15),
+                          child: Text("${movie.rating}", style: const TextStyle(color: Colors.white, fontSize: 16,),),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(right: 6),
+                          child: Text("${movie.released}-", style: const TextStyle(color: Colors.grey, fontSize: 16,),),
+                        )
+                      ],
+                    )
+                  ],
+                ),
               ),
             ],
           ),
@@ -65,22 +87,3 @@ class MovieCard extends StatelessWidget {
     );
   }
 }
-
-
-// Column(
-//             children: [
-//               Container(
-//                 color: Colors.red,
-//                 child: Text(movie.title),
-//               ),
-//               const SizedBox(
-//                 height: 10,
-//               ),
-//               Container(
-//                 color: const Color.fromARGB(255, 255, 235, 59),
-//                 child: Text(
-//                   movie.description,
-//                 ),
-//               ),
-//             ],
-//           ),

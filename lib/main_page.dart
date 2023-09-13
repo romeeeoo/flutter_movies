@@ -27,35 +27,93 @@ class MainPage extends StatelessWidget {
 
 const movies = [
   Movie(
-      title: "some movie",
+      title: "One Piece. Большой куш",
       description:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum non rhoncus libero. Phasellus id eros eu tortor malesuada sollicitudin.",
-      poster: "assets/images/HD-wallpaper-godzilla-movies-movie-poster-godzilla-king-of-the-monsters-cyan-blue-vertical.jpg"),
-        Movie(
-      title: "some movie",
+      poster: "assets/images/godzila.jpg",
+      released: 2023,
+      rating: 10.0,
+      topPosition: 1
+      ),
+ Movie(
+      title: "One Piece. Большой куш",
       description:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum non rhoncus libero. Phasellus id eros eu tortor malesuada sollicitudin.",
-      poster: "assets/images/HD-wallpaper-godzilla-movies-movie-poster-godzilla-king-of-the-monsters-cyan-blue-vertical.jpg"),
-        Movie(
-      title: "some movie",
+      poster: "assets/images/godzila.jpg",
+      released: 2023,
+      rating: 10.0,
+      topPosition: 2
+      ),
+ Movie(
+      title: "One Piece. Большой куш",
       description:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum non rhoncus libero. Phasellus id eros eu tortor malesuada sollicitudin.",
-      poster: "assets/images/HD-wallpaper-godzilla-movies-movie-poster-godzilla-king-of-the-monsters-cyan-blue-vertical.jpg"),
-        Movie(
-      title: "some movie",
+      poster: "assets/images/godzila.jpg",
+      released: 2023,
+      rating: 10.0,
+      topPosition: 3
+      ),
+ Movie(
+      title: "One Piece. Большой куш",
       description:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum non rhoncus libero. Phasellus id eros eu tortor malesuada sollicitudin.",
-      poster: "assets/images/HD-wallpaper-godzilla-movies-movie-poster-godzilla-king-of-the-monsters-cyan-blue-vertical.jpg"),
-        Movie(
-      title: "some movie",
+      poster: "assets/images/godzila.jpg",
+      released: 2023,
+      rating: 10.0,
+      topPosition: 4
+      ),
+ Movie(
+      title: "One Piece. Большой куш",
       description:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum non rhoncus libero. Phasellus id eros eu tortor malesuada sollicitudin.",
-      poster: "assets/images/HD-wallpaper-godzilla-movies-movie-poster-godzilla-king-of-the-monsters-cyan-blue-vertical.jpg"),
-        Movie(
-      title: "some movie",
+      poster: "assets/images/godzila.jpg",
+      released: 2023,
+      rating: 10.0,
+      topPosition: 5
+      ),
+ Movie(
+      title: "One Piece. Большой куш",
       description:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum non rhoncus libero. Phasellus id eros eu tortor malesuada sollicitudin.",
-      poster: "assets/images/HD-wallpaper-godzilla-movies-movie-poster-godzilla-king-of-the-monsters-cyan-blue-vertical.jpg"),
-      
-  
+      poster: "assets/images/godzila.jpg",
+      released: 2023,
+      rating: 10.0,
+      topPosition: 6
+      ),
+ Movie(
+      title: "One Piece. Большой куш",
+      description:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum non rhoncus libero. Phasellus id eros eu tortor malesuada sollicitudin.",
+      poster: "assets/images/godzila.jpg",
+      released: 2023,
+      rating: 10.0,
+      topPosition: 7
+      ),
+ Movie(
+      title: "One Piece. Большой куш",
+      description:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum non rhoncus libero. Phasellus id eros eu tortor malesuada sollicitudin.",
+      poster: "assets/images/godzila.jpg",
+      released: 2023,
+      rating: 10.0,
+      topPosition: 8
+      ),
+ Movie(
+      title: "One Piece. Большой куш",
+      description:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum non rhoncus libero. Phasellus id eros eu tortor malesuada sollicitudin.",
+      poster: "assets/images/godzila.jpg",
+      released: 2023,
+      rating: 10.0,
+      topPosition: 9
+      ),
+ Movie(
+      title: "One Piece. Большой куш",
+      description:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum non rhoncus libero. Phasellus id eros eu tortor malesuada sollicitudin.",
+      poster: "assets/images/godzila.jpg",
+      released: 2023,
+      rating: 10.0,
+      topPosition: 10
+      ),
 ];
