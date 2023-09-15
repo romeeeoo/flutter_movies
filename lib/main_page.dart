@@ -1,13 +1,9 @@
-import "package:flutter/material.dart";
-import 'package:scroll_movies/movie_card/movie_card.dart';
+import 'package:flutter/material.dart';
+import 'package:scroll_movies/common/widgets/screen_with_appbar.dart';
 import 'package:scroll_movies/movie.dart';
-import 'package:scroll_movies/screen_and_appbar.dart';
+import 'package:scroll_movies/movie_card/movie_card.dart';
 
 class GenreCard extends StatelessWidget {
-  final Genre genre;
-  final VoidCallback onTap;
-  final bool isSelected;
-
   const GenreCard({
     super.key,
     required this.genre,
@@ -15,81 +11,42 @@ class GenreCard extends StatelessWidget {
     required this.isSelected,
   });
 
+  final Genre genre;
+  final VoidCallback onTap;
+  final bool isSelected;
+
   @override
-  Widget build(context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        height: 40,
-        child: Padding(
-          padding: const EdgeInsets.all(10),
-          child: Row(children: [
-            Text(
-              genre.name,
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 20,
-              ),
-            ),
-            Visibility(
-              visible: isSelected,
-              child: const Icon(
-                IconData(
-                  0xe1f6,
-                  fontFamily: 'MaterialIcons',
+  Widget build(context) => GestureDetector(
+        onTap: onTap,
+        child: Container(
+          height: 40,
+          child: Padding(
+            padding: const EdgeInsets.all(10),
+            child: Row(
+              children: [
+                Text(
+                  genre.name,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                  ),
                 ),
-                color: Colors.white,
-                size: 20,
-              ),
-            )
-          ]),
-        ),
-      ),
-    );
-  }
-}
-
-class FilterPage extends StatefulWidget {
-  const FilterPage({super.key});
-
-  @override
-  State createState() => _FilterPageState();
-}
-
-class _FilterPageState extends State<FilterPage> {
-
-  List<Genre> genres = Genre.values;
-
-  List<bool> selectedGenres = List.filled(Genre.values.length, false);
-
-  @override
-  Widget build(context) {
-    return ScreenWithAppBar(
-      title: 'Filter',
-      pageContent: Column(children: [
-        Expanded(
-            child: ListView.separated(
-          separatorBuilder: (context, index) => const Divider(
-            height: 1,
-            color: Color.fromARGB(174, 86, 86, 86),
+                Visibility(
+                  visible: isSelected,
+                  child: const Icon(
+                    IconData(
+                      0xe1f6,
+                      fontFamily: 'MaterialIcons',
+                    ),
+                    color: Colors.white,
+                    size: 20,
+                  ),
+                ),
+              ],
+            ),
           ),
-          itemCount: Genre.values.length,
-          itemBuilder: (context, index) {
-            return GenreCard(
-              genre: genres[index],
-              isSelected: selectedGenres[index],
-              onTap: () {
-                setState(() {
-                  selectedGenres[index] = !selectedGenres[index];
-                });
-              },
-            );
-          },
-        ))
-      ]),
-      hasRouteBack: true,
-    );
-  }
+        ),
+      );
 }
 
 // top 10 on IMDb
@@ -97,31 +54,16 @@ class MainPage extends StatelessWidget {
   const MainPage({super.key});
 
   @override
-  Widget build(context) {
-    return ScreenWithAppBar(
-      hasRouteBack: false,
-      title: "Top 10 on IMDb",
+  Widget build(context) => ScreenWithAppBar(
+      title: 'Top 10 on IMDb',
       pageContent: Column(
         children: [
           Container(
             height: 50,
             color: const Color.fromARGB(168, 37, 37, 37),
-            child: Row(
+            child: const Row(
               mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: GestureDetector(
-                    onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => const FilterPage())),
-                    child: const Icon(
-                      IconData(0xe280, fontFamily: 'MaterialIcons'),
-                      color: Colors.white,
-                      size: 30,
-                    ),
-                  ),
-                ),
-              ],
+              children: [],
             ),
           ),
           Expanded(
@@ -139,7 +81,6 @@ class MainPage extends StatelessWidget {
         ],
       ),
     );
-  }
 }
 
 const movies = [

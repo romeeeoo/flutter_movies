@@ -1,22 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:scroll_movies/common/widgets/screen_with_appbar.dart';
 import 'package:scroll_movies/movie.dart';
-import 'package:scroll_movies/screen_and_appbar.dart';
 
 class MovieDetailed extends StatelessWidget {
-  final Movie movie;
-  final bool hasRouteBack;
-
   const MovieDetailed({
     this.hasRouteBack = true,
     required this.movie,
     super.key,
   });
 
+  final Movie movie;
+  final bool hasRouteBack;
 
   @override
-  Widget build(context) {
-    return ScreenWithAppBar(
-        hasRouteBack: hasRouteBack,
+  Widget build(context) => ScreenWithAppBar(
         title: movie.title,
         pageContent: Column(
           children: [
@@ -35,8 +32,8 @@ class MovieDetailed extends StatelessWidget {
                 movie.description,
                 softWrap: true,
               ),
-            )
+            ),
           ],
-        ));
-  }
+        ),
+      );
 }

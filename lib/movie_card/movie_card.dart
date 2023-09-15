@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:scroll_movies/movie_detailed.dart';
 import 'package:scroll_movies/movie.dart';
 import 'package:scroll_movies/movie_card/add_to_watchlist_tab.dart';
+import 'package:scroll_movies/movie_detailed.dart';
 
 class MovieCard extends StatelessWidget {
   const MovieCard({
@@ -12,8 +12,7 @@ class MovieCard extends StatelessWidget {
   final Movie movie;
 
   @override
-  Widget build(context) {
-    return GestureDetector(
+  Widget build(context) => GestureDetector(
       onTap: () {
         Navigator.of(context).push(
           MaterialPageRoute(
@@ -43,7 +42,7 @@ class MovieCard extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.only(bottom: 5),
                       child: Text(
-                        "${movie.topPosition}",
+                        '${movie.topPosition}',
                         style: const TextStyle(
                           color: Colors.white,
                           fontSize: 16,
@@ -69,11 +68,11 @@ class MovieCard extends StatelessWidget {
                         ),
                         Padding(
                           padding: const EdgeInsets.only(right: 15),
-                          child: Text("${movie.rating}", style: const TextStyle(color: Colors.white, fontSize: 16,),),
+                          child: Text('${movie.rating}', style: const TextStyle(color: Colors.white, fontSize: 16,),),
                         ),
                         Padding(
                           padding: const EdgeInsets.only(right: 6),
-                          child: Text("${movie.released}-", style: const TextStyle(color: Colors.grey, fontSize: 16,),),
+                          child: Text('${movie.released}-', style: const TextStyle(color: Colors.grey, fontSize: 16,),),
                         )
                       ],
                     )
@@ -85,5 +84,4 @@ class MovieCard extends StatelessWidget {
         ),
       ),
     );
-  }
 }
