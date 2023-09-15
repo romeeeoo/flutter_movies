@@ -5,7 +5,7 @@ class ScreenWithAppBar extends StatelessWidget {
   final Widget pageContent;
   final double pageContentPadding;
   final bool hasRouteBack;
-  Widget? leading;
+   Widget? leading;
 
   ScreenWithAppBar({
     required this.title,

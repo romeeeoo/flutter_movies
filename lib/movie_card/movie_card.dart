@@ -22,7 +22,7 @@ class MovieCard extends StatelessWidget {
         );
       },
       child: Container(
-        color: Color.fromRGBO(23, 23, 23, 1),
+        color: const Color.fromRGBO(23, 23, 23, 1),
         height: 150,
         child: Padding(
           padding: const EdgeInsets.all(10),
