@@ -1,13 +1,4 @@
-enum Genre {
-  action,
-  comedy,
-  drama,
-  fantasy,
-  scienceFiction,
-  thriller,
-  other,
-}
-
+import 'package:scroll_movies/genre.dart';
 
 class Movie {
   const Movie({
