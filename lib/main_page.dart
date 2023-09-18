@@ -61,7 +61,7 @@ class _MainPageState extends State<MainPage> {
   var _filteredMovies = [];
   List<Genre> genres =
       List.generate(Genre.values.length, (index) => Genre.values[index]);
-  List<bool> selectedGenres = List.filled(Genre.values.length, false);
+  final List<bool> _selectedGenres = List.filled(Genre.values.length, false);
 
   @override
   void initState() {
@@ -85,11 +85,16 @@ class _MainPageState extends State<MainPage> {
                       itemCount: genres.length,
                       itemBuilder: (context, index) => GenreBadge(
                         genre: genres[index],
-                        isSelected: selectedGenres[index],
+                        isSelected: _selectedGenres[index],
                         onTap: () {
-                          setState(() {
-                            selectedGenres[index] = !selectedGenres[index];
-                          });
+                          for (int i = 0; i < _selectedGenres.length; i++) {
+                            _selectedGenres[i] = false;
+                          }
+                          _selectedGenres[index] = !_selectedGenres[index];
+                          _filteredMovies = movies
+                              .where((movie) => movie.genre == genres[index])
+                              .toList();
+                          setState(() {});
                         },
                       ),
                     ),
@@ -103,7 +108,7 @@ class _MainPageState extends State<MainPage> {
                   height: 1,
                   color: Color.fromARGB(174, 86, 86, 86),
                 ),
-                itemCount: movies.length,
+                itemCount: _filteredMovies.length,
                 itemBuilder: (context, index) => MovieCard(
                   movie: _filteredMovies[index],
                 ),
@@ -135,7 +140,8 @@ class GenreBadge extends StatelessWidget {
             child: DecoratedBox(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(30),
-                border: Border.all(width: 2, color: isSelected ? Colors.yellow : Colors.white),
+                border: Border.all(
+                    width: 2, color: isSelected ? Colors.yellow : Colors.white),
               ),
               child: Padding(
                 padding: const EdgeInsets.symmetric(
