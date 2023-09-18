@@ -5,7 +5,6 @@ import 'package:scroll_movies/movie.dart';
 import 'package:scroll_movies/movie_card/movie_card.dart';
 import 'package:flutter/foundation.dart';
 
-
 // class GenreCard extends StatelessWidget {
 //   const GenreCard({
 //     super.key,
@@ -51,8 +50,24 @@ import 'package:flutter/foundation.dart';
 // }
 
 // top 10 on IMDb
-class MainPage extends StatelessWidget {
+class MainPage extends StatefulWidget {
   const MainPage({super.key});
+
+  @override
+  State<MainPage> createState() => _MainPageState();
+}
+
+class _MainPageState extends State<MainPage> {
+  var _filteredMovies = [];
+  List<Genre> genres =
+      List.generate(Genre.values.length, (index) => Genre.values[index]);
+  List<bool> selectedGenres = List.filled(Genre.values.length, false);
+
+  @override
+  void initState() {
+    super.initState();
+    _filteredMovies = movies;
+  }
 
   @override
   Widget build(context) => ScreenWithAppBar(
@@ -62,8 +77,24 @@ class MainPage extends StatelessWidget {
             Container(
               height: 60,
               color: const Color.fromARGB(168, 37, 37, 37),
-              child: const Row(
-                children: [GenreBadge()],
+              child: Row(
+                children: [
+                  Expanded(
+                    child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: genres.length,
+                      itemBuilder: (context, index) => GenreBadge(
+                        genre: genres[index],
+                        isSelected: selectedGenres[index],
+                        onTap: () {
+                          setState(() {
+                            selectedGenres[index] = !selectedGenres[index];
+                          });
+                        },
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
             Expanded(
@@ -74,7 +105,7 @@ class MainPage extends StatelessWidget {
                 ),
                 itemCount: movies.length,
                 itemBuilder: (context, index) => MovieCard(
-                  movie: movies[index],
+                  movie: _filteredMovies[index],
                 ),
               ),
             ),
@@ -84,35 +115,45 @@ class MainPage extends StatelessWidget {
 }
 
 class GenreBadge extends StatelessWidget {
-  const GenreBadge({super.key});
+  const GenreBadge({
+    super.key,
+    required this.genre,
+    required this.isSelected,
+    required this.onTap,
+  });
 
-  final genres = Genre.values;
-  
-
+  final Genre genre;
+  final bool isSelected;
+  final VoidCallback onTap;
 
   @override
-  Widget build(BuildContext context) => Expanded(
-    child: ListView( 
-          scrollDirection: Axis.horizontal,
-          children: genres.map(
-                (genre) => Center(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10),
-                    child: DecoratedBox(
-                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(30), border: Border.all(width: 2, color: Colors.white) ),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-                        child: Text(
-                          genre.name,
-                          style: const TextStyle(color: Colors.white, fontSize: 20),
-                        ),
-                      ),
-                    ),
+  Widget build(BuildContext context) => GestureDetector(
+        onTap: onTap,
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            child: DecoratedBox(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(30),
+                border: Border.all(width: 2, color: isSelected ? Colors.yellow : Colors.white),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 15,
+                  vertical: 7,
+                ),
+                child: Text(
+                  genre.name,
+                  style: TextStyle(
+                    color: isSelected ? Colors.yellow : Colors.white,
+                    fontSize: 20,
                   ),
                 ),
-              ).toList()
+              ),
+            ),
+          ),
         ),
-  );
+      );
 }
 
 const movies = [
@@ -207,11 +248,3 @@ const movies = [
       topPosition: 10,
       genre: Genre.comedy),
 ];
-
-// Iterable<Movie> filteredMovies(List<Genre> genreList) {
-//   if (genreList.isNotEmpty) {
-//     return movies.where((movie) => genreList.contains(movie.genre));
-//   } else {
-//     return movies;
-//   }
-// }

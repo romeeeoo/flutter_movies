@@ -21,7 +21,7 @@ class AddToWatchlistTab extends StatelessWidget {
             child: Icon(IconData(0xe047, fontFamily: 'MaterialIcons'),
                 color: Color.fromARGB(213, 255, 255, 255), size: 25,),
           ),
-        ],),
+        ]),
       ),
     );
 }
