@@ -58,7 +58,7 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  var _filteredMovies = [];
+  Set<Movie> _filteredMovies = {};
   List<Genre> genres =
       List.generate(Genre.values.length, (index) => Genre.values[index]);
   final List<bool> _selectedGenres = List.filled(Genre.values.length, false);
@@ -66,7 +66,7 @@ class _MainPageState extends State<MainPage> {
   @override
   void initState() {
     super.initState();
-    _filteredMovies = movies;
+    _filteredMovies = Set<Movie>.from(movies);
   }
 
   @override
@@ -87,14 +87,34 @@ class _MainPageState extends State<MainPage> {
                         genre: genres[index],
                         isSelected: _selectedGenres[index],
                         onTap: () {
-                          for (int i = 0; i < _selectedGenres.length; i++) {
-                            _selectedGenres[i] = false;
-                          }
+                          // for (int i = 0; i < _selectedGenres.length; i++) {
+                          //   _selectedGenres[i] = false;
+                          // }
+                          // _selectedGenres[index] = !_selectedGenres[index];
+                          // _filteredMovies = movies
+                          //     .where((movie) => movie.genre == genres[index])
+                          //     .toList();
+                          // setState(() {});
                           _selectedGenres[index] = !_selectedGenres[index];
-                          _filteredMovies = movies
-                              .where((movie) => movie.genre == genres[index])
-                              .toList();
-                          setState(() {});
+                          if (_selectedGenres
+                              .every((element) => element == false)) {
+                            _filteredMovies = Set<Movie>.from(movies);
+                            setState(() {});
+                          } else {
+                            _filteredMovies = {};
+                            for (int i = 0; i < _selectedGenres.length; i++) {
+                              if (_selectedGenres[i]) {
+                                _filteredMovies.addAll(
+                                  movies
+                                      .where(
+                                        (movie) => movie.genre == genres[i],
+                                      )
+                                      .toList(),
+                                );
+                              }
+                              setState(() {});
+                            }
+                          }
                         },
                       ),
                     ),
@@ -110,7 +130,7 @@ class _MainPageState extends State<MainPage> {
                 ),
                 itemCount: _filteredMovies.length,
                 itemBuilder: (context, index) => MovieCard(
-                  movie: _filteredMovies[index],
+                  movie: _filteredMovies.toList()[index],
                 ),
               ),
             ),
@@ -141,7 +161,9 @@ class GenreBadge extends StatelessWidget {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(30),
                 border: Border.all(
-                    width: 2, color: isSelected ? Colors.yellow : Colors.white),
+                  width: 2,
+                  color: isSelected ? Colors.yellow : Colors.white,
+                ),
               ),
               child: Padding(
                 padding: const EdgeInsets.symmetric(
