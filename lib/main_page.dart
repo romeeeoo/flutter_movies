@@ -1,53 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:scroll_movies/common/widgets/screen_with_appbar.dart';
 import 'package:scroll_movies/genre.dart';
+import 'package:scroll_movies/genre_badge.dart';
 import 'package:scroll_movies/movie.dart';
 import 'package:scroll_movies/movie_card/movie_card.dart';
-import 'package:flutter/foundation.dart';
-
-// class GenreCard extends StatelessWidget {
-//   const GenreCard({
-//     super.key,
-//     required this.genre,
-//     required this.onTap,
-//     required this.isSelected,
-//   });
-
-//   final Genre genre;
-//   final VoidCallback onTap;
-//   final bool isSelected;
-
-//   @override
-//   Widget build(context) => GestureDetector(
-//         onTap: onTap,
-//         child: Container(
-//           height: 40,
-//           child: Padding(
-//             padding: const EdgeInsets.all(10),
-//             child: Row(children: [
-//               Text(
-//                 genre.name,
-//                 style: const TextStyle(
-//                   color: Colors.white,
-//                   fontSize: 20,
-//                 ),
-//               ),
-//               Visibility(
-//                 visible: isSelected,
-//                 child: const Icon(
-//                   IconData(
-//                     0xe1f6,
-//                     fontFamily: 'MaterialIcons',
-//                   ),
-//                   color: Colors.white,
-//                   size: 20,
-//                 ),
-//               ),
-//             ]),
-//           ),
-//         ),
-//       );
-// }
 
 // top 10 on IMDb
 class MainPage extends StatefulWidget {
@@ -59,14 +15,13 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   Set<Movie> _filteredMovies = {};
-  List<Genre> genres =
-      List.generate(Genre.values.length, (index) => Genre.values[index]);
-  final List<bool> _selectedGenres = List.filled(Genre.values.length, false);
+  List<Genre> genres = Genre.values;
+  final Set<Genre> _selectedGenres = {};
 
   @override
   void initState() {
     super.initState();
-    _filteredMovies = Set<Movie>.from(movies);
+    _filteredMovies = Set<Movie>.from(_movies);
   }
 
   @override
@@ -74,52 +29,18 @@ class _MainPageState extends State<MainPage> {
         title: 'Top 10 on IMDb',
         pageContent: Column(
           children: [
-            Container(
-              height: 60,
-              color: const Color.fromARGB(168, 37, 37, 37),
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
               child: Row(
-                children: [
-                  Expanded(
-                    child: ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      itemCount: genres.length,
-                      itemBuilder: (context, index) => GenreBadge(
-                        genre: genres[index],
-                        isSelected: _selectedGenres[index],
-                        onTap: () {
-                          // for (int i = 0; i < _selectedGenres.length; i++) {
-                          //   _selectedGenres[i] = false;
-                          // }
-                          // _selectedGenres[index] = !_selectedGenres[index];
-                          // _filteredMovies = movies
-                          //     .where((movie) => movie.genre == genres[index])
-                          //     .toList();
-                          // setState(() {});
-                          _selectedGenres[index] = !_selectedGenres[index];
-                          if (_selectedGenres
-                              .every((element) => element == false)) {
-                            _filteredMovies = Set<Movie>.from(movies);
-                            setState(() {});
-                          } else {
-                            _filteredMovies = {};
-                            for (int i = 0; i < _selectedGenres.length; i++) {
-                              if (_selectedGenres[i]) {
-                                _filteredMovies.addAll(
-                                  movies
-                                      .where(
-                                        (movie) => movie.genre == genres[i],
-                                      )
-                                      .toList(),
-                                );
-                              }
-                              setState(() {});
-                            }
-                          }
-                        },
+                children: Genre.values
+                    .map(
+                      (genre) => GenreBadge(
+                        genre: genre,
+                        isSelected: _selectedGenres.contains(genre),
+                        onTap: () {},
                       ),
-                    ),
-                  ),
-                ],
+                    )
+                    .toList(),
               ),
             ),
             Expanded(
@@ -137,55 +58,9 @@ class _MainPageState extends State<MainPage> {
           ],
         ),
       );
-}
 
-class GenreBadge extends StatelessWidget {
-  const GenreBadge({
-    super.key,
-    required this.genre,
-    required this.isSelected,
-    required this.onTap,
-  });
-
-  final Genre genre;
-  final bool isSelected;
-  final VoidCallback onTap;
-
-  @override
-  Widget build(BuildContext context) => GestureDetector(
-        onTap: onTap,
-        child: Center(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: DecoratedBox(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(30),
-                border: Border.all(
-                  width: 2,
-                  color: isSelected ? Colors.yellow : Colors.white,
-                ),
-              ),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 15,
-                  vertical: 7,
-                ),
-                child: Text(
-                  genre.name,
-                  style: TextStyle(
-                    color: isSelected ? Colors.yellow : Colors.white,
-                    fontSize: 20,
-                  ),
-                ),
-              ),
-            ),
-          ),
-        ),
-      );
-}
-
-const movies = [
-  Movie(
+  final _movies = [
+    Movie(
       title: "One Piece. Большой куш",
       description:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum non rhoncus libero. Phasellus id eros eu tortor malesuada sollicitudin.",
@@ -193,8 +68,9 @@ const movies = [
       released: 2023,
       rating: 10.0,
       topPosition: 1,
-      genre: Genre.action),
-  Movie(
+      genre: Genre.action,
+    ),
+    Movie(
       title: "One Piece. Большой куш",
       description:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum non rhoncus libero. Phasellus id eros eu tortor malesuada sollicitudin.",
@@ -202,8 +78,9 @@ const movies = [
       released: 2023,
       rating: 10.0,
       topPosition: 2,
-      genre: Genre.drama),
-  Movie(
+      genre: Genre.drama,
+    ),
+    Movie(
       title: "One Piece. Большой куш",
       description:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum non rhoncus libero. Phasellus id eros eu tortor malesuada sollicitudin.",
@@ -211,8 +88,9 @@ const movies = [
       released: 2023,
       rating: 10.0,
       topPosition: 3,
-      genre: Genre.fantasy),
-  Movie(
+      genre: Genre.fantasy,
+    ),
+    Movie(
       title: "One Piece. Большой куш",
       description:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum non rhoncus libero. Phasellus id eros eu tortor malesuada sollicitudin.",
@@ -220,8 +98,9 @@ const movies = [
       released: 2023,
       rating: 10.0,
       topPosition: 4,
-      genre: Genre.other),
-  Movie(
+      genre: Genre.other,
+    ),
+    Movie(
       title: "One Piece. Большой куш",
       description:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum non rhoncus libero. Phasellus id eros eu tortor malesuada sollicitudin.",
@@ -229,8 +108,9 @@ const movies = [
       released: 2023,
       rating: 10.0,
       topPosition: 5,
-      genre: Genre.scienceFiction),
-  Movie(
+      genre: Genre.scienceFiction,
+    ),
+    Movie(
       title: "One Piece. Большой куш",
       description:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum non rhoncus libero. Phasellus id eros eu tortor malesuada sollicitudin.",
@@ -238,8 +118,9 @@ const movies = [
       released: 2023,
       rating: 10.0,
       topPosition: 6,
-      genre: Genre.thriller),
-  Movie(
+      genre: Genre.thriller,
+    ),
+    Movie(
       title: "One Piece. Большой куш",
       description:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum non rhoncus libero. Phasellus id eros eu tortor malesuada sollicitudin.",
@@ -247,8 +128,9 @@ const movies = [
       released: 2023,
       rating: 10.0,
       topPosition: 7,
-      genre: Genre.action),
-  Movie(
+      genre: Genre.action,
+    ),
+    Movie(
       title: "One Piece. Большой куш",
       description:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum non rhoncus libero. Phasellus id eros eu tortor malesuada sollicitudin.",
@@ -256,8 +138,9 @@ const movies = [
       released: 2023,
       rating: 10.0,
       topPosition: 8,
-      genre: Genre.action),
-  Movie(
+      genre: Genre.action,
+    ),
+    Movie(
       title: "One Piece. Большой куш",
       description:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum non rhoncus libero. Phasellus id eros eu tortor malesuada sollicitudin.",
@@ -265,8 +148,9 @@ const movies = [
       released: 2023,
       rating: 10.0,
       topPosition: 9,
-      genre: Genre.action),
-  Movie(
+      genre: Genre.action,
+    ),
+    Movie(
       title: "One Piece. Большой куш",
       description:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum non rhoncus libero. Phasellus id eros eu tortor malesuada sollicitudin.",
@@ -274,5 +158,7 @@ const movies = [
       released: 2023,
       rating: 10.0,
       topPosition: 10,
-      genre: Genre.comedy),
-];
+      genre: Genre.comedy,
+    ),
+  ];
+}
