@@ -93,15 +93,15 @@ class MovieCard extends StatelessWidget {
                         ],
                       ),
                       Padding(
-                            padding: EdgeInsets.fromLTRB(0, 10, 10, 10),
-                            child: Text(
-                              movie.genre.name,
-                              style: const TextStyle(
-                                color: Colors.grey,
-                                fontSize: 16,
-                              ),
-                            ),
+                        padding: const EdgeInsets.fromLTRB(0, 10, 10, 10),
+                        child: Text(
+                          movie.genre.name,
+                          style: const TextStyle(
+                            color: Colors.grey,
+                            fontSize: 16,
                           ),
+                        ),
+                      ),
                     ],
                   ),
                 ),

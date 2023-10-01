@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:scroll_movies/common/widgets/screen_with_appbar.dart';
 import 'package:scroll_movies/genre.dart';
 import 'package:scroll_movies/genre_badge.dart';
-import 'package:scroll_movies/movie.dart';
+import 'package:scroll_movies/mocks.dart';
 import 'package:scroll_movies/movie_card/movie_card.dart';
 
 // top 10 on IMDb
@@ -14,15 +14,9 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  Set<Movie> _filteredMovies = {};
+  var _filteredMovies = Mocks.movies;
   List<Genre> genres = Genre.values;
   final Set<Genre> _selectedGenres = {};
-
-  @override
-  void initState() {
-    super.initState();
-    _filteredMovies = Set<Movie>.from(_movies);
-  }
 
   @override
   Widget build(context) => ScreenWithAppBar(
@@ -37,7 +31,26 @@ class _MainPageState extends State<MainPage> {
                       (genre) => GenreBadge(
                         genre: genre,
                         isSelected: _selectedGenres.contains(genre),
-                        onTap: () {},
+                        onTap: () {
+                          if (_selectedGenres.contains(genre)) {
+                            _selectedGenres.remove(genre);
+                          } else {
+                            _selectedGenres.add(genre);
+                          }
+                        
+                          setState(() {
+                            if (_selectedGenres.isEmpty) {
+                              _filteredMovies = Mocks.movies;
+                            } else {
+                              _filteredMovies = Mocks.movies
+                                  .where(
+                                    (movie) =>
+                                        _selectedGenres.contains(movie.genre),
+                                  )
+                                  .toList();
+                            }
+                          });
+                        },
                       ),
                     )
                     .toList(),
@@ -58,107 +71,4 @@ class _MainPageState extends State<MainPage> {
           ],
         ),
       );
-
-  final _movies = [
-    Movie(
-      title: "One Piece. Большой куш",
-      description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum non rhoncus libero. Phasellus id eros eu tortor malesuada sollicitudin.",
-      poster: "assets/images/godzila.jpg",
-      released: 2023,
-      rating: 10.0,
-      topPosition: 1,
-      genre: Genre.action,
-    ),
-    Movie(
-      title: "One Piece. Большой куш",
-      description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum non rhoncus libero. Phasellus id eros eu tortor malesuada sollicitudin.",
-      poster: "assets/images/godzila.jpg",
-      released: 2023,
-      rating: 10.0,
-      topPosition: 2,
-      genre: Genre.drama,
-    ),
-    Movie(
-      title: "One Piece. Большой куш",
-      description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum non rhoncus libero. Phasellus id eros eu tortor malesuada sollicitudin.",
-      poster: "assets/images/godzila.jpg",
-      released: 2023,
-      rating: 10.0,
-      topPosition: 3,
-      genre: Genre.fantasy,
-    ),
-    Movie(
-      title: "One Piece. Большой куш",
-      description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum non rhoncus libero. Phasellus id eros eu tortor malesuada sollicitudin.",
-      poster: "assets/images/godzila.jpg",
-      released: 2023,
-      rating: 10.0,
-      topPosition: 4,
-      genre: Genre.other,
-    ),
-    Movie(
-      title: "One Piece. Большой куш",
-      description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum non rhoncus libero. Phasellus id eros eu tortor malesuada sollicitudin.",
-      poster: "assets/images/godzila.jpg",
-      released: 2023,
-      rating: 10.0,
-      topPosition: 5,
-      genre: Genre.scienceFiction,
-    ),
-    Movie(
-      title: "One Piece. Большой куш",
-      description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum non rhoncus libero. Phasellus id eros eu tortor malesuada sollicitudin.",
-      poster: "assets/images/godzila.jpg",
-      released: 2023,
-      rating: 10.0,
-      topPosition: 6,
-      genre: Genre.thriller,
-    ),
-    Movie(
-      title: "One Piece. Большой куш",
-      description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum non rhoncus libero. Phasellus id eros eu tortor malesuada sollicitudin.",
-      poster: "assets/images/godzila.jpg",
-      released: 2023,
-      rating: 10.0,
-      topPosition: 7,
-      genre: Genre.action,
-    ),
-    Movie(
-      title: "One Piece. Большой куш",
-      description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum non rhoncus libero. Phasellus id eros eu tortor malesuada sollicitudin.",
-      poster: "assets/images/godzila.jpg",
-      released: 2023,
-      rating: 10.0,
-      topPosition: 8,
-      genre: Genre.action,
-    ),
-    Movie(
-      title: "One Piece. Большой куш",
-      description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum non rhoncus libero. Phasellus id eros eu tortor malesuada sollicitudin.",
-      poster: "assets/images/godzila.jpg",
-      released: 2023,
-      rating: 10.0,
-      topPosition: 9,
-      genre: Genre.action,
-    ),
-    Movie(
-      title: "One Piece. Большой куш",
-      description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum non rhoncus libero. Phasellus id eros eu tortor malesuada sollicitudin.",
-      poster: "assets/images/godzila.jpg",
-      released: 2023,
-      rating: 10.0,
-      topPosition: 10,
-      genre: Genre.comedy,
-    ),
-  ];
 }
