@@ -1,9 +1,8 @@
 import 'package:scroll_movies/genre.dart';
 import 'package:scroll_movies/movie.dart';
 
-class Mocks {
 
-static const movies = [
+const movies = [
     Movie(
       title: 'One Piece. Большой куш',
       description:
@@ -105,6 +104,3 @@ static const movies = [
       genre: Genre.comedy,
     ),
   ];
-
-
-}

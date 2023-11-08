@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class AddToWatchlistTab extends StatelessWidget {
-  const AddToWatchlistTab({super.key});
+class AddToWatchlistButton extends StatelessWidget {
+  const AddToWatchlistButton({super.key});
 
   @override
   Widget build(context) => Positioned(
@@ -13,14 +13,14 @@ class AddToWatchlistTab extends StatelessWidget {
             alignment: Alignment.center,
             children: [
               Icon(
-                IconData(0xe7f2, fontFamily: 'MaterialIcons'),
+                Icons.bookmark_sharp,
                 color: Color.fromARGB(168, 37, 37, 37),
                 size: 50,
               ),
               Positioned(
                 top: 10,
                 child: Icon(
-                  IconData(0xe047, fontFamily: 'MaterialIcons'),
+                  Icons.add,
                   color: Color.fromARGB(213, 255, 255, 255),
                   size: 25,
                 ),

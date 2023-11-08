@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:scroll_movies/movie.dart';
-import 'package:scroll_movies/movie_card/add_to_watchlist_tab.dart';
+import 'package:scroll_movies/movie_card/add_to_watchlist_button.dart';
 import 'package:scroll_movies/movie_detailed.dart';
 
 class MovieCard extends StatelessWidget {
@@ -13,13 +13,11 @@ class MovieCard extends StatelessWidget {
 
   @override
   Widget build(context) => GestureDetector(
-        onTap: () {
-          Navigator.of(context).push(
+        onTap: () => Navigator.of(context).push(
             MaterialPageRoute(
               builder: (context) => MovieDetailed(movie: movie),
             ),
-          );
-        },
+          ),
         child: Container(
           color: const Color.fromRGBO(23, 23, 23, 1),
           height: 150,
@@ -30,7 +28,7 @@ class MovieCard extends StatelessWidget {
                 Stack(
                   children: [
                     Image.asset(movie.poster),
-                    const AddToWatchlistTab(),
+                    const AddToWatchlistButton(),
                   ],
                 ),
                 Padding(
@@ -65,7 +63,7 @@ class MovieCard extends StatelessWidget {
                           const Padding(
                             padding: EdgeInsets.only(right: 3),
                             child: Icon(
-                              IconData(0xf01d3, fontFamily: 'MaterialIcons'),
+                              Icons.star_rounded,
                               color: Color.fromARGB(255, 230, 199, 25),
                               size: 21,
                             ),
