@@ -4,7 +4,7 @@ import 'package:scroll_movies/movie.dart';
 
 const movies = [
     Movie(
-      title: 'One Piece. Большой куш',
+      title: 'Extremely long movie title test yo yo yo etc etc etc asdfadfasdfasdfasdfasdfasdfasdf',
       description:
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum non rhoncus libero. Phasellus id eros eu tortor malesuada sollicitudin.',
       poster: 'assets/images/godzila.jpg',

@@ -29,7 +29,9 @@ class _MainPageState extends State<MainPage> {
                     .map(
                       (genre) => Padding(
                         padding: const EdgeInsets.symmetric(
-                            vertical: 10, horizontal: 5),
+                          vertical: 10,
+                          horizontal: 5,
+                        ),
                         child: GenreBadge(
                           title: genre.name,
                           isSelected: _selectedGenres.contains(genre),

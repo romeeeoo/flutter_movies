@@ -11,6 +11,7 @@ class MovieCardText extends StatelessWidget {
     if (isGrey) {
       return Text(
         data,
+        overflow: TextOverflow.ellipsis,
         style: const TextStyle(
           color: Colors.grey,
           fontSize: 16,
@@ -19,6 +20,7 @@ class MovieCardText extends StatelessWidget {
     } else {
       return Text(
         data,
+        overflow: TextOverflow.ellipsis,
         style: const TextStyle(
           color: Colors.white,
           fontSize: 16,
