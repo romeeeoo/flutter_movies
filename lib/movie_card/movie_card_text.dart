@@ -7,25 +7,12 @@ class MovieCardText extends StatelessWidget {
   final bool isGrey;
 
   @override
-  Widget build(context) {
-    if (isGrey) {
-      return Text(
+  Widget build(context) => Text(
         data,
         overflow: TextOverflow.ellipsis,
-        style: const TextStyle(
-          color: Colors.grey,
+        style: TextStyle(
+          color: isGrey ? Colors.grey : Colors.white,
           fontSize: 16,
         ),
       );
-    } else {
-      return Text(
-        data,
-        overflow: TextOverflow.ellipsis,
-        style: const TextStyle(
-          color: Colors.white,
-          fontSize: 16,
-        ),
-      );
-    }
-  }
 }
