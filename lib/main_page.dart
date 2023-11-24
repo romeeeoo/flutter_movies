@@ -26,15 +26,19 @@ class _MainPageState extends State<MainPage> {
               padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
               child: Form(
                 child: TextFormField(
-                  decoration: const InputDecoration(
-                    border: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: Colors.red,
-                        width: 5.0,
-                      ),
-                    ),
+                  cursorHeight: 30,
+                  cursorColor: const Color.fromARGB(255, 70, 70, 70),
+                  decoration: InputDecoration(
                     filled: true,
                     fillColor: Colors.white,
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(5),
+                    ),
+                    focusedBorder: const OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Colors.white,
+                      ),
+                    ),
                   ),
                 ),
               ),
